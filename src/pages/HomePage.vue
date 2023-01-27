@@ -32,6 +32,9 @@ export default {
 
 <template>
     <div class="container py-5">
+        <div>
+            <RouterLink :to="{ name: 'second' }" class="btn btn-warning mb-5">vai alla second page</RouterLink>
+        </div>
         <div class="row">
             <div class="card mb-4 py-3" v-for="(post, index) in arrayPosts" :key="index">
                 <ul>
