@@ -37,19 +37,21 @@ export default {
         </div>
         <div class="row">
             <div class="card mb-4 py-3" v-for="(post, index) in arrayPosts" :key="index">
-                <ul>
-                    <li>
-                        <h4>{{ post.name }}</h4>
-                    </li>
-                    <li>
-                        <h5>{{ post.id }}</h5>
-                    </li>
-                    <li>
-                        <p>
-                            {{ post.text }}
-                        </p>
-                    </li>
-                </ul>
+                <RouterLink class="sensitive" :to="{ name: 'single-post', params: { id: post.id } }">
+                    <ul>
+                        <li>
+                            <h4>{{ post.name }}</h4>
+                        </li>
+                        <li>
+                            <h5>{{ post.id }}</h5>
+                        </li>
+                        <li>
+                            <p>
+                                {{ post.text }}
+                            </p>
+                        </li>
+                    </ul>
+                </RouterLink>
             </div>
         </div>
     </div>
@@ -58,5 +60,14 @@ export default {
 <style lang="scss">
 ul {
     list-style: none;
+}
+
+.card {
+    cursor: pointer;
+
+    .sensitive {
+        text-decoration: none;
+        color: inherit;
+    }
 }
 </style>
