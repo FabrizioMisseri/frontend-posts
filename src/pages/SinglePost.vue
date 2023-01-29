@@ -70,6 +70,9 @@ export default {
                             tag: {{ tag.name }}
                         </li>
                     </ul>
+                    <h6>
+                        scritto da: {{ post.author.name }}
+                    </h6>
                 </div>
             </div>
         </div>
