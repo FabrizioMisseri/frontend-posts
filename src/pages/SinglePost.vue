@@ -65,14 +65,11 @@ export default {
                     <p>
                         {{ post.text }}
                     </p>
-                    <div v-if="post.tags">
-                        <h6>tags:</h6>
-                        <ul>
-                            <li v-for="(tag, index) in post.tags" :key="index">
-                                {{ tag.name }}
-                            </li>
-                        </ul>
-                    </div>
+                    <ul>
+                        <li v-for="(tag, index) in post.tags" :key="index">
+                            tag: {{ tag.name }}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
