@@ -13,6 +13,12 @@ export default {
         }
     },
 
+    computed: {
+        tags() {
+            return this.post.tags ? this.post.tags.name : 'Nessuna tags';
+        }
+    },
+
     created() {
         this.axiosCall();
     },
@@ -22,11 +28,11 @@ export default {
             const id = this.$route.params.id;
             //console.log(id);
             axios.get(`${this.store.baseApiUrl}posts/${id}`).then(resp => {
+                console.log(resp);
                 resp = resp.data;
-                //console.log(resp);
                 if (resp.success) {
                     this.post = resp.response;
-                    console.log(this.post);
+                    //console.log(this.post);
                 } else {
                     this.missingPost = resp.response;
                 }
@@ -59,6 +65,14 @@ export default {
                     <p>
                         {{ post.text }}
                     </p>
+                    <div v-if="post.tags">
+                        <h6>tags:</h6>
+                        <ul>
+                            <li v-for="(tag, index) in post.tags" :key="index">
+                                {{ tag.name }}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
